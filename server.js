@@ -18,6 +18,14 @@ mongoose
   .catch((err) => console.log("Error: ", err));
 
 // Routes
+app.get("/", async (req, res) => {
+  try {
+    res.send("Welcome");
+  } catch (error) {
+    res.send("Not Welcome");
+  }
+});
+
 app.post("/api/products", async (req, res) => {
   const { name, description } = req.body;
   try {
@@ -37,6 +45,7 @@ app.get("/api/products", async (req, res) => {
     res.status(500).json({ message: "Error fetching products", error });
   }
 });
+
 
 // Start server
 app.listen(PORT, () => {
